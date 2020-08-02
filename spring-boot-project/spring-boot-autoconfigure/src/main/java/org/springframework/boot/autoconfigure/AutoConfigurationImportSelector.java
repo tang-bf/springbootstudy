@@ -72,6 +72,7 @@ import org.springframework.util.StringUtils;
 public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware,
 		ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {
 
+
 	private static final AutoConfigurationEntry EMPTY_ENTRY = new AutoConfigurationEntry();
 
 	private static final String[] NO_IMPORTS = {};
@@ -113,6 +114,7 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 			return EMPTY_ENTRY;
 		}
 		AnnotationAttributes attributes = getAttributes(annotationMetadata);
+		//加载EnableAutoConfiguration
 		List<String> configurations = getCandidateConfigurations(annotationMetadata, attributes);
 		configurations = removeDuplicates(configurations);
 		Set<String> exclusions = getExclusions(annotationMetadata, attributes);

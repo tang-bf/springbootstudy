@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -32,10 +33,11 @@ import org.springframework.core.type.AnnotationMetadata;
  * @author Phillip Webb
  */
 class EnableConfigurationPropertiesRegistrar implements ImportBeanDefinitionRegistrar {
-
+//2.0版本实现的ImportSelector
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata metadata, BeanDefinitionRegistry registry) {
 		registerInfrastructureBeans(registry);
+		//主要是獲取ConfigurationPropertiesBindingPostProcessor
 		ConfigurationPropertiesBeanRegistrar beanRegistrar = new ConfigurationPropertiesBeanRegistrar(registry);
 		getTypes(metadata).forEach(beanRegistrar::register);
 	}

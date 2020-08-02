@@ -38,6 +38,7 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(EnableConfigurationPropertiesRegistrar.class)
+//版本有變化EnableConfigurationPropertiesImportSelector
 public @interface EnableConfigurationProperties {
 
 	/**

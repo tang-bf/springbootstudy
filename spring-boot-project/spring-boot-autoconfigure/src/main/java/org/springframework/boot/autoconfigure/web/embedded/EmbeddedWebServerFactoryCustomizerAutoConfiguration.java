@@ -43,9 +43,10 @@ import org.springframework.core.env.Environment;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication
+//conditionl  注解  传入实现Condition 重写matches方法
 @EnableConfigurationProperties(ServerProperties.class)
 public class EmbeddedWebServerFactoryCustomizerAutoConfiguration {
-
+//utoConfigurationImportSelector 實現了importselector 獲取spring.factories中autoconfiguration
 	/**
 	 * Nested configuration if Tomcat is being used.
 	 */
