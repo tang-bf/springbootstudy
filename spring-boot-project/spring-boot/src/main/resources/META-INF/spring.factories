@@ -30,8 +30,8 @@ org.springframework.boot.context.config.ConfigFileApplicationListener,\
 org.springframework.boot.context.config.DelegatingApplicationListener,\
 org.springframework.boot.context.logging.ClasspathLoggingApplicationListener,\
 org.springframework.boot.context.logging.LoggingApplicationListener,\
-org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener\
-org.springframework.boot.webservices.client.MyListener
+org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
+# org.springframework.boot.webservices.client.MyListener
 
 # Environment Post Processors
 org.springframework.boot.env.EnvironmentPostProcessor=\

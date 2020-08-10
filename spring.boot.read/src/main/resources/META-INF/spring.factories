@@ -21,7 +21,7 @@
 
 # Application Listeners
  org.springframework.context.ApplicationListener=\
- com.tbh.demo.controller.MyListener  
+ com.tbh.demo.controller.MyListener
 #  org.springframework.boot.ClearCachesApplicationListener,\
 # org.springframework.boot.builder.ParentContextCloserApplicationListener,\
 # org.springframework.boot.cloud.CloudFoundryVcapEnvironmentPostProcessor,\
