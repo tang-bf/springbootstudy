@@ -69,7 +69,12 @@ import org.springframework.web.servlet.DispatcherServlet;
 @ConditionalOnClass(DispatcherServlet.class)
 @AutoConfigureAfter(ServletWebServerFactoryAutoConfiguration.class)
 public class DispatcherServletAutoConfiguration {
-
+	/**
+	 * springboot  是把dispatcherservlet放到spring容器中
+	 * springmvc  是讲spring上下文传到dispatcherservlet中
+	 * 可看springstudy项目中 模仿实现零配置springmvc实现springboots
+	 * new dispatcherservlet(annotationconfigwebapplicationcontext)
+	 */
 	/*
 	 * The bean name for a DispatcherServlet that will be mapped to the root URL "/"
 	 */

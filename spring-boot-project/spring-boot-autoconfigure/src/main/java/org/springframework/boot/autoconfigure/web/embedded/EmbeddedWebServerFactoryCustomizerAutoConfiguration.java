@@ -42,6 +42,13 @@ import org.springframework.core.env.Environment;
  * @since 2.0.0
  */
 @Configuration(proxyBeanMethods = false)
+/**
+ * 有了 proxyBeanMethods 属性后，配置类不会被代理了。
+ * 主要是为了提高性能，如果你的 @Bean 方法之间没有调用关系的话可以把 proxyBeanMethods 设置为 false。
+ * 否则，方法内部引用的类生产的类和 Spring 容器中类是两个类。
+ * 前面说了加了 proxyBeanMethods 之后不会被代理了，
+ * 所以配置类和方法也可以使用 final 修饰了，5.2之前的版本是强制校验的。
+ */
 @ConditionalOnWebApplication
 //conditionl  注解  传入实现Condition 重写matches方法
 @EnableConfigurationProperties(ServerProperties.class)
