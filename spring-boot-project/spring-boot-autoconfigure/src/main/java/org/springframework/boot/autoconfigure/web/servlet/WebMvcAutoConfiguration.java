@@ -132,7 +132,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Artsiom Yudovin
  * @since 2.0.0
  * 配置mvc
- * 如果有配置了WebMvcConfigurationSupport
+ * 如果有配置了WebMvcConfigurationSupport springboot就不会帮你初始化了
+ * springbootz之前可以通过实现WebMvcConfigurationSupport 接口
+ * 或者实现WebMvcConfigurer 加上注解 enablewebmvc 这个注解实际也是IMport了WebMvcConfigurationSupport
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = Type.SERVLET)
