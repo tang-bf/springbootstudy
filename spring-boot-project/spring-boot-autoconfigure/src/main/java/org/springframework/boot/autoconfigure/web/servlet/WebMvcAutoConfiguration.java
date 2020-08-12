@@ -131,6 +131,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Bruce Brouwer
  * @author Artsiom Yudovin
  * @since 2.0.0
+ * 配置mvc
+ * 如果有配置了WebMvcConfigurationSupport
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = Type.SERVLET)

@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletRegistration;
 
 import org.springframework.beans.factory.ObjectProvider;
@@ -90,7 +91,20 @@ public class DispatcherServletAutoConfiguration {
 	@ConditionalOnClass(ServletRegistration.class)
 	@EnableConfigurationProperties({ HttpProperties.class, WebMvcProperties.class })
 	protected static class DispatcherServletConfiguration {
-
+//  DispatcherServlet extends FrameworkServlet implements
+//  ApplicationContextAware   populateBean 之后  initializeBean  applyBeanPostProcessorsBeforeInitialization(
+	//	ApplicationContextAwareProcessor(beanpostprocessor )  invokeAwareInterfaces
+	//if (bean instanceof ApplicationContextAware) {
+//			((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
+//		}
+//  调用setApplicationContext 设置  webApplicationContext
+//if (mbd == null || !mbd.isSynthetic()) {
+//			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+//		}
+//
+//		try {
+//			invokeInitMethods(beanName, wrappedBean, mbd);
+//		}
 		@Bean(name = DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
 		public DispatcherServlet dispatcherServlet(HttpProperties httpProperties, WebMvcProperties webMvcProperties) {
 			DispatcherServlet dispatcherServlet = new DispatcherServlet();
@@ -118,7 +132,17 @@ public class DispatcherServletAutoConfiguration {
 	@EnableConfigurationProperties(WebMvcProperties.class)
 	@Import(DispatcherServletConfiguration.class)
 	protected static class DispatcherServletRegistrationConfiguration {
-
+		//DispatcherServletRegistrationBean   implements ServletContextInitializer
+		//ServletRegistrationBean  servletContext.addServlet(name, this.servlet);
+		//讲dispatcherservlet加入
+		/*	This interface is designed to act in a similar way to
+	  * {@link ServletContainerInitializer
+		}, but have a lifecycle that's managed by Spring and
+		* not the Servlet container.
+		* <p>*/
+		//spring springframework 中 SpringServletContainerInitializer implements ServletContainerInitializer
+		//handletypes WebApplicationInitializer 基于servlet 3.0规范
+		//springboot 中也有abstract class SpringBootServletInitializer implements WebApplicationInitializer
 		@Bean(name = DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME)
 		@ConditionalOnBean(value = DispatcherServlet.class, name = DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
 		public DispatcherServletRegistrationBean dispatcherServletRegistration(DispatcherServlet dispatcherServlet,

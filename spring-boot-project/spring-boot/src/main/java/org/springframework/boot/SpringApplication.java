@@ -1241,6 +1241,7 @@ public class SpringApplication {
 	 */
 	public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
 		return run(new Class<?>[] { primarySource }, args);
+
 	}
 
 	/**
