@@ -20,6 +20,11 @@ import org.springframework.core.ResolvableType;
  */
 //在meta-inf/
 //也可以自己写一个@componet 类  方法上加上@eventlistener
+//处理@eventlistener 注解类是在 preInstantiateSingletons  后/
+// Trigger post-initialization callback for all applicable beans...
+// SmartInitializingSingleton  afterSingletonsInstantiated
+//EventListenerMethodProcessor implements SmartInitializingSingleton, ApplicationContextAware, BeanFactoryPostProcessor
+//EventListenerMethodProcessor 这个是在annotationconfigapplicationcontext构造方法中加入的几个开天辟地的rootbeandefinition中
 public class MyListener implements GenericApplicationListener
 		 {
 	public boolean supportsEventType(ResolvableType eventType) {

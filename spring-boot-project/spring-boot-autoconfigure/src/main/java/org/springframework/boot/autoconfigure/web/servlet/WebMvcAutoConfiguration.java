@@ -131,10 +131,36 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Bruce Brouwer
  * @author Artsiom Yudovin
  * @since 2.0.0
+ *
+ *  Spring Boot自动配置spring mvc原理
+ *    2.1:DispatcherServlet注册,
+ *    2.2:WebAutoConfiguration,
+ *    2.3:ContentNegotiatingViewResolver
+ *    2.4:Converter
+ *    2.5:HttpMessageConverters
+ *
  * 配置mvc
  * 如果有配置了WebMvcConfigurationSupport springboot就不会帮你初始化了
- * springbootz之前可以通过实现WebMvcConfigurationSupport 接口
+ * springbootz之前可以通过实继承WebMvcConfigurationSupport类
  * 或者实现WebMvcConfigurer 加上注解 enablewebmvc 这个注解实际也是IMport了WebMvcConfigurationSupport
+ *
+ *
+ * 如果您想要保持Spring Boot MVC特性，并且您想要添加额外的MVC配置(拦截器、格式化程序、视图控制器和其他特性)，
+ * 您可以添加您自己的类型为WebMvcConfigurer的@Configuration类，但是不需要@EnableWebMvc。
+ * 如果您希望提供RequestMappingHandlerMapping、RequestMappingHandlerAdapter或
+ * ExceptionHandlerExceptionResolver的自定义实例，
+ * 您可以声明一个WebMvcRegistrationsAdapter实例来提供这样的组件。
+ * 如果您想完全控制Spring MVC，您可以添加自己的带有@EnableWebMvc注释的@Configuration。
+ * If you want to keep Spring Boot MVC
+ * features and you want to add additional MVC configuration
+ * (interceptors, formatters, view controllers, and other features),
+ * you can add your own @Configuration class of type WebMvcConfigurer but
+ * without @EnableWebMvc.
+ * If you wish to provide custom instances of RequestMappingHandlerMapping,
+ * RequestMappingHandlerAdapter, or ExceptionHandlerExceptionResolver,
+ * you can declare a WebMvcRegistrationsAdapter instance to provide such components.
+ * If you want to take complete control of Spring MVC,
+ * you can add your own @Configuration annotated with @EnableWebMvc
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = Type.SERVLET)
@@ -262,6 +288,10 @@ public class WebMvcAutoConfiguration {
 			return resolver;
 		}
 
+		//默认的视图解析器:整合所有的视图解析器 遍历所有的视图解析器，选择一个最佳的方案
+		//	initServletContext 递归获取所有的ViewResolver
+		//resolveViewName  解析查找最佳的
+		//SmartView  重定向最前
 		@Bean
 		@ConditionalOnBean(ViewResolver.class)
 		@ConditionalOnMissingBean(name = "viewResolver", value = ContentNegotiatingViewResolver.class)

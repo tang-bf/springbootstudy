@@ -171,7 +171,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 		Assert.notNull(this.servlet, "Servlet must not be null");
 		return "servlet " + getServletName();
 	}
-
+//此处讲dispatcherservlet加入到servletcontetx中
 	@Override
 	protected ServletRegistration.Dynamic addRegistration(String description, ServletContext servletContext) {
 		String name = getServletName();

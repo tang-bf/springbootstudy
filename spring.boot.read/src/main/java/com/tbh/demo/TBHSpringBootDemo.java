@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cglib.core.Converter;
 
 /**
  * @ProjectName: spring-boot-build
@@ -39,6 +40,25 @@ public class TBHSpringBootDemo { // extends SpringBootServletInitializer  打成
 //
 //		}
 //		SpringApplication.run(xxxx.class,args);
+		/**
+		 * SpringMVC中，可以使用@RequestBody和@ResponseBody两个注解，分别完成请求报文到对象和对象到响应报文的转换，
+		 * 底层这种灵活的消息转换机制就是利用HttpMessageConverter来实现的，
+		 * pring内置了很多HttpMessageConverter，比如MappingJackson2HttpMessageConverter，
+		 * StringHttpMessageConverter等，下面我们来自定义自己的消息转换器来满足自己特定的需求，
+		 * 有两种方式：1、使用spring或者第三方提供的现成的HttpMessageConverter，2、自己重写一个HttpMessageConverter。
+		 */
+		//Converter 接口
+		/**
+		 * pring提供了3种converter接口,分别是Converter、ConverterFactory和GenericConverter.
+		 * 一般用于1:1, 1:N, N:N的source->target类型转化。
+		 * Converter接口 ：使用最简单，最不灵活；
+		 * ConverterFactory接口 ：使用较复杂，比较灵活；
+		 * GenericConverter接口 ：使用最复杂，也最灵活；
+		 * Converter
+		 * Converter的实现类举例：该接口Spring内部的实现也非常多，
+		 * 大多数都是以内部类的形式实现（因为它是一个@FunctionalInterface嘛）
+		 * ConditionalConverter 3.2之后才有
+		 */
 		SpringApplication.run(TBHSpringBootDemo.class,args);
 	}
 }
