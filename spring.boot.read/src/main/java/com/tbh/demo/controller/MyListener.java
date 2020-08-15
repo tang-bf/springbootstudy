@@ -2,6 +2,7 @@ package com.tbh.demo.controller;
 
 import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.context.ApplicationEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.context.event.GenericApplicationListener;
 import org.springframework.core.ResolvableType;
 
@@ -18,6 +19,7 @@ import org.springframework.core.ResolvableType;
  * @Version: 1.0
  */
 //在meta-inf/
+//也可以自己写一个@componet 类  方法上加上@eventlistener
 public class MyListener implements GenericApplicationListener
 		 {
 	public boolean supportsEventType(ResolvableType eventType) {
