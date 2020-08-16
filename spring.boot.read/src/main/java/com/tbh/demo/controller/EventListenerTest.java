@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 // SmartInitializingSingleton  afterSingletonsInstantiated
 //EventListenerMethodProcessor implements SmartInitializingSingleton, ApplicationContextAware, BeanFactoryPostProcessor
 //EventListenerMethodProcessor 这个是在annotationconfigapplicationcontext构造方法中加入的几个开天辟地的rootbeandefinition中
+//是new了一个新的bean  ApplicationListenerMethodAdapter
 /**context.addApplicationListener(applicationListener);
  * 在finishRefresh(); 中publishEvent(new ContextRefreshedEvent(this));
  * getApplicationEventMulticaster().multicastEvent(applicationEvent, eventType);
