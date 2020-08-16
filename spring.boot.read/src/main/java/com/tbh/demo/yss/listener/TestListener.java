@@ -1,6 +1,5 @@
 package com.tbh.demo.yss.listener;
 
-import com.luban.bean.A;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
