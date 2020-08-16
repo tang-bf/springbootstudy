@@ -178,7 +178,7 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 		ServletContext servletContext = getServletContext();
 		//以内嵌jar包启动(servletContext null )还是实现SpringBootServletInitializer 打war包启动
 		if (webServer == null && servletContext == null) {
-			//TomcatServletWebServerFactory
+			//TomcatServletWebServerFactory new  tomcat 并启动
 			ServletWebServerFactory factory = getWebServerFactory();
 			this.webServer = factory.getWebServer(getSelfInitializer());
 		}
