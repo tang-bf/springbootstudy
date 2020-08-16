@@ -176,6 +176,7 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 	private void createWebServer() {
 		WebServer webServer = this.webServer;
 		ServletContext servletContext = getServletContext();
+		//以内嵌jar包启动还是实现SpringBootServletInitializer 打war包启动
 		if (webServer == null && servletContext == null) {
 			//TomcatServletWebServerFactory
 			ServletWebServerFactory factory = getWebServerFactory();
@@ -200,6 +201,10 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 	 */
 	protected ServletWebServerFactory getWebServerFactory() {
 		// Use bean names so that we don't consider the hierarchy
+		//多个ServletWebServerFactory 的话会报错，只能有一个才可以
+		//TomcatServletWebServerFactory ---> ServletWebServerFactory
+		//springboot 默认有依赖tomcat,所以想替换容器需要排除tomcat依赖 并且配置一个后由于
+		//@ConditionalOnMissingBean(value = ServletWebServerFactory. 后面的就不起作用
 		String[] beanNames = getBeanFactory().getBeanNamesForType(ServletWebServerFactory.class);
 		if (beanNames.length == 0) {
 			throw new ApplicationContextException("Unable to start ServletWebServerApplicationContext due to missing "
