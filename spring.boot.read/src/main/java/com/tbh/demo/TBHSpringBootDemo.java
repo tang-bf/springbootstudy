@@ -23,6 +23,23 @@ import org.springframework.cglib.core.Converter;
  * @Version: 1.0
  */
 
+/**
+ * springboot 使用内嵌的tomcat的话不会直接使用servlet3.0的特性 （spi机制  meta/inf ja）详解见另一个springboot源码
+ * 解析；
+ * 官网注释
+ * Embedded servlet containers do not directly execute
+ * the Servlet 3.0+ javax.servlet.ServletContainerInitializer i
+ * nterface or Spring’s org.springframework.web.WebApplicationInitializer interface.
+ * This is an intentional design decision intended to reduce the risk that third party libraries
+ * designed to run inside a war may break Spring Boot applications.
+ * If you need to perform servlet context initialization in a Spring Boot application,
+ * you should register a bean that
+ * implements the org.springframework.boot.web.servlet.ServletContextInitializer interface.
+ * The single onStartup method provides access to the ServletContext and,
+ * if necessary, can easily be used as an adapter to an existing WebApplicationInitializer.
+ * @HandlesTypes(WebApplicationInitializer.class)
+ * public class SpringServletContainerInitializer
+ */
 @SpringBootApplication
 public class TBHSpringBootDemo { // extends SpringBootServletInitializer  打成war包
 	/**
