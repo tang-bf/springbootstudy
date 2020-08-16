@@ -83,12 +83,22 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 	protected final void setRegisterErrorPageFilter(boolean registerErrorPageFilter) {
 		this.registerErrorPageFilter = registerErrorPageFilter;
 	}
-
+//springboot 以war包启动 外部容器就会执行这个方法
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		// Logger initialization is deferred in case an ordered
 		// LogServletContextInitializer is being used
 		this.logger = LogFactory.getLog(getClass());
+		//创建上下文的时候已经把servletcontext传入，也是构建sringapplication h后面会判断
+		//最后执行到run方法 private void createWebServer() {
+		//		WebServer webServer = this.webServer;
+		//		ServletContext servletContext = getServletContext();
+		//		//以内嵌jar包启动(servletContext null )还是实现SpringBootServletInitializer 打war包启动
+		//		if (webServer == null && servletContext == null) {
+		//			//TomcatServletWebServerFactory
+		//			ServletWebServerFactory factory = getWebServerFactory();
+		//			this.webServer = factory.getWebServer(getSelfInitializer());
+		//		}
 		WebApplicationContext rootAppContext = createRootApplicationContext(servletContext);
 		if (rootAppContext != null) {
 			servletContext.addListener(new ContextLoaderListener(rootAppContext) {
