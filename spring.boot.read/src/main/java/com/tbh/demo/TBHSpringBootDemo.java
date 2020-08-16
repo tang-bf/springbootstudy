@@ -41,7 +41,10 @@ import org.springframework.cglib.core.Converter;
  * public class SpringServletContainerInitializer
  */
 @SpringBootApplication
-public class TBHSpringBootDemo { // extends SpringBootServletInitializer  打成war包
+public class TBHSpringBootDemo { // extends SpringBootServletInitializer
+	// Note that a WebApplicationInitializer is only needed if you are building a war file and
+   //* deploying it. If you prefer to run an embedded web server then you won't need this at
+	//		* all. 打成war包
 	/**
 	 *  @Override
 	 *     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
