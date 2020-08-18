@@ -28,8 +28,10 @@ public class ClassLoaderTest {
 		System.out.println(userClassLoader);//sun.misc.Launcher$AppClassLoader@18b4aac2
 		System.out.println(String.class.getClassLoader());//null
 		//java 核心类库都是引导类加载器加载的
-
-
+		//全盘委托
+		//用于确认 默认使用的类加载器（new  关键字用哪个）  当有new关键字需要类加载器加载时
+		// jvm会判断当前调用用new关键字的类
+		//是用哪个加载器加载的 然后调用用new关键字的类加载器加载
 	}
 	/**
 	 * protected Class<?> loadClass(String name, boolean resolve)
