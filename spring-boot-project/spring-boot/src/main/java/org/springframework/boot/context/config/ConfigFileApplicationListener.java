@@ -172,7 +172,7 @@ public class ConfigFileApplicationListener implements EnvironmentPostProcessor, 
 		return ApplicationEnvironmentPreparedEvent.class.isAssignableFrom(eventType)
 				|| ApplicationPreparedEvent.class.isAssignableFrom(eventType);
 	}
-
+	//读取配置文件
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ApplicationEnvironmentPreparedEvent) {
@@ -678,6 +678,7 @@ public class ConfigFileApplicationListener implements EnvironmentPostProcessor, 
 			for (MutablePropertySources sources : loaded) {
 				for (PropertySource<?> source : sources) {
 					if (added.add(source.getName())) {
+						//加载配置文件
 						addLoadedPropertySource(destination, lastAdded, source);
 						lastAdded = source.getName();
 					}

@@ -2,4 +2,5 @@ student:
   age: 18
   name: lihua
   sex: M
-
+server:
+  port: 8888

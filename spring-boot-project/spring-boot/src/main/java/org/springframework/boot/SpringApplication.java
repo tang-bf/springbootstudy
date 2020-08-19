@@ -366,7 +366,7 @@ public class SpringApplication {
 	private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
 			ApplicationArguments applicationArguments) {
 		// Create and configure the environment
-		ConfigurableEnvironment environment = getOrCreateEnvironment();
+		ConfigurableEnvironment environment = getOrCreateEnvironment();//environment.getProperty("server.port") 为空
 		configureEnvironment(environment, applicationArguments.getSourceArgs());
 		ConfigurationPropertySources.attach(environment);
 		//这里也是一个发布事件  会有一个去读取yml文件
