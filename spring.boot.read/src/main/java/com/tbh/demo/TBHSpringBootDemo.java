@@ -26,7 +26,7 @@ import org.springframework.cglib.core.Converter;
 /**
  * springboot 使用内嵌的tomcat的话不会直接使用servlet3.0的特性 （spi机制  meta/inf ja）详解见另一个springboot源码
  * 解析；
- * 官网注释
+ * 官网注释 内嵌的selrvlet容器不会直接执行servlet3.0规范的。。。。
  * Embedded servlet containers do not directly execute
  * the Servlet 3.0+ javax.servlet.ServletContainerInitializer i
  * nterface or Spring’s org.springframework.web.WebApplicationInitializer interface.
