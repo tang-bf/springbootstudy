@@ -2,6 +2,7 @@ package com.tbh.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,10 +22,10 @@ import java.util.Date;
  */
 @Controller
 //@RestController
-@RequestMapping("/c1")
+//@RequestMapping("/c1")
 public class HelloController {
-    //@RequestMapping("/hello")
-   // @ResponseBody
+    @RequestMapping("/hello")
+    @ResponseBody
    // @PostMapping
     public String hello(){
         return  "hello spring boot";
