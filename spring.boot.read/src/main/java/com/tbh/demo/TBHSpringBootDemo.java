@@ -82,3 +82,17 @@ public class TBHSpringBootDemo { // extends SpringBootServletInitializer
 		SpringApplication.run(TBHSpringBootDemo.class,args);
 	}
 }
+//springboot父子容器
+//springboot能够访问静态资源，是因为重写了一个handlemapping 处理，通过response。write出去，并且做了缓存
+//缓存实现就是告诉浏览器一个响应码304;
+//而springmvc拦截所有请求的时候，访问不到静态资源，是因为没有响应的handlemapping 处理
+//ResourceHttpRequestHandler
+//checkRequest(request);
+//
+//// Header phase
+//		if (new ServletWebRequest(request, response).checkNotModified(resource.lastModified())) {
+//				logger.trace("Resource not modified");
+//				return;
+//				}
+//				this.resourceRegionHttpMessageConverter.write(
+//				HttpRange.toResourceRegions(httpRanges, resource), mediaType, outputMessage);
