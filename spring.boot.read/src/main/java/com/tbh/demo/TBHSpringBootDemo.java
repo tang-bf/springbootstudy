@@ -86,6 +86,9 @@ public class TBHSpringBootDemo { // extends SpringBootServletInitializer
 //springboot能够访问静态资源，是因为重写了一个handlemapping 处理，通过response。write出去，并且做了缓存
 //缓存实现就是告诉浏览器一个响应码304;
 //而springmvc拦截所有请求的时候，访问不到静态资源，是因为没有响应的handlemapping 处理
+//ResourceProperties
+//CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/META-INF/resources/",
+//			"classpath:/resources/", "classpath:/static/", "classpath:/public/" };
 //ResourceHttpRequestHandler
 //checkRequest(request);
 //
